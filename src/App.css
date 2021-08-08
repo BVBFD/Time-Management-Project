@@ -1,38 +1,221 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* navbar */
+.navbar {
+  position: sticky;
+  top: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: lightgoldenrodyellow;
+  height: 10vh;
+  line-height: 10vh;
+  padding: 0 20px;
+}
+
+.navbar span {
+  margin: 0 20px;
+}
+
+.navbar_name_count {
+  color: green;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.navbar_count {
+  display: inline-block;
+  line-height: 40px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: green;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar_Day-Month-Year span {
+  color: green;
+  font-size: xx-large;
+  font-weight: bolder;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* addTimeBar */
+.addTimeBar {
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  background-color: linen;
+}
+
+.inputSthToDo {
+  width: 50vw;
+  font-size: x-large;
+  font-weight: bold;
+  color: green;
+  border-radius: 5px;
+  border: 3px solid green;
+}
+
+.btnSthToDo {
+  width: 10vw;
+  font-size: x-large;
+  font-weight: bold;
+  border-style: none;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addTimeBar_date {
+  width: 20vw;
+  text-align: center;
+  margin: auto;
+  color: green;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.addTimeBar_time {
+  width: 20vw;
+  text-align: center;
+  margin: auto;
+  color: green;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.explain-content {
+  width: 100vw;
+  text-align: center;
+  color: red;
+  font-size: large;
+  font-weight: 700;
+  background-color: linen;
+  padding: 5px 0;
+}
+
+/* obj-sthToDo */
+.obj-sthToDo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 20px;
+}
+
+.obj-sthToDo_part1 {
+  font-size: xx-large;
+  font-weight: bolder;
+  color: green;
+}
+
+.obj-sthToDo_finishBtn {
+  font-size: xx-large;
+  font-weight: bolder;
+  color: white;
+  background-color: green;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.obj-sthToDo_part2 span {
+  margin: 0 15px;
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.priority_count {
+  background-color: darkviolet;
+}
+
+.sthToDoList_count {
+  background-color: green;
+}
+
+.obj-sthToDo_part2 {
+  font-size: xx-large;
+  color: darkorange;
+  position: relative;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.obj-sthToDo_part2 button {
+  margin: 0 10px;
+  background-color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  font-size: xx-large;
+  cursor: pointer;
+}
+
+.addingSthToDoBtn {
+  color: darkorange;
+}
+
+.fa-plus-square {
+  color: blue;
+}
+
+.fa-minus-square {
+  color: red;
+}
+
+.fa-trash {
+  color: brown;
+}
+
+/* project-list_btn */
+.project-list {
+  display: none;
+  width: 22vw;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  padding: 5px;
+  position: absolute;
+  top: 60px;
+  z-index: 99;
+  background-color: white;
+}
+
+.list-show {
+  display: block;
+}
+
+.project-list input {
+  width: 100%;
+  height: 30px;
+  border: 3px solid green;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.project-list button {
+  width: 30%;
+  height: 30px;
+  border: 3px solid green;
+  background-color: green;
+  color: white;
+  font-size: large;
+}
+
+.project-list ul {
+  color: black;
+  font-weight: 650;
+  font-size: x-large;
+  list-style: none;
+  padding: 0;
 }
