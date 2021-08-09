@@ -84,11 +84,53 @@ class App extends Component {
         const listToDo_ul = document.querySelectorAll('.project-list_ul')[index];
         const listToDo_li = document.createElement('li');
         const listToDo_cnt = document.createTextNode(toDoName);
+        const listToDo_btn = document.createElement('button');
+        const listToDo_cnt_exit = document.createTextNode('x');
         listToDo_li.appendChild(listToDo_cnt);
         listToDo_ul.appendChild(listToDo_li);
+        listToDo_btn.appendChild(listToDo_cnt_exit);
+        listToDo_li.appendChild(listToDo_btn);
         sth.toDoList.push(toDoName);
         const count = sth.toDoList.length;
         document.querySelectorAll(".sthToDoList_count")[index].innerText = count;
+      }
+    });
+  };
+
+  editTime = (sth, strChangedTime, endChangedTime) => {
+    this.state.sths.forEach(value => {
+      if(value.id === sth.id){
+        sth.startTime = strChangedTime;
+        sth.endTime = endChangedTime;
+        // const index = this.state.sths.indexOf(sth);
+        const strTime = document.querySelector('.obj-sthToDo_time');
+        const endTime = document.querySelector('.obj-sthToDo_endTime');
+        strTime.replaceWith(strChangedTime);
+        endTime.replaceWith(endChangedTime);
+      }
+    });
+  };
+
+  editTimeReady = (sth) => {
+    this.state.sths.forEach(value => {
+      if(sth.id === value.id){
+          const index = this.state.sths.indexOf(sth);
+          const editStrForm = document.querySelectorAll('.obj-sthToDo_editStrForm')[index];
+          const editFinishForm = document.querySelectorAll('.obj-sthToDo_editFinishForm')[index];
+          const strTime = document.querySelectorAll('.obj-sthToDo_time')[index];
+          const endTime = document.querySelectorAll('.obj-sthToDo_endTime')[index];
+        if(editStrForm.style.display !== "none"){
+          editStrForm.style.display = "none";
+          editFinishForm.style.display = "none";
+          endTime.style.display = "inline";
+          strTime.style.display = "inline";
+        }
+        else{
+          editStrForm.style.display = "inline-block";
+          editFinishForm.style.display = "inline-block";
+          strTime.style.display = "none";
+          endTime.style.display = "none";
+        }
       }
     });
   };
@@ -112,6 +154,8 @@ class App extends Component {
           onDeleteBtn={this.deleteBtn}
           onOpenToDoList={this.openToDoList}
           onAddToDoList={this.addToDoList}
+          onEditTime={this.editTime}
+          onEditTimeReady={this.editTimeReady}
         />
       </div>
     );

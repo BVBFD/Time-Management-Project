@@ -41,17 +41,43 @@ class SthToDo extends Component {
         return this.props.sth.toDoList.length;
     }
 
+    onEditTime = () => {
+        this.props.onEditTime(this.props.sth, this.props.sth.strChangedTime, this.props.sth.endChangedTime);
+    };
+
+    onEditTimeReady = () => {
+        this.props.onEditTimeReady(this.props.sth);
+    };
+
     toDoInput = React.createRef();
 
     render() {
         return (
             <div className="obj-sthToDo">
                 <div className="obj-sthToDo_part1">
-                    <span className="obj-sthToDo_title">{this.props.sth.name}</span>
-                    <span className="obj-sthToDo_time">({this.props.sth.startTime} ~ </span>
-                    <span className="obj-sthToDo_time_)">
-                        <button className="obj-sthToDo_finishBtn" onClick={this.endTimeBtn}>Finish</button>
-                    )</span>
+                    <span className="obj-sthToDo_title">
+                        {this.props.sth.name} 
+                        <span>(</span>
+                        <form className="obj-sthToDo_editStrForm">
+                            <input className="obj-sthToDo_editInput"></input>
+                            <button className="obj-sthToDo_editInputBtn">Add</button>
+                        </form>
+                    </span>
+
+                    <span className="obj-sthToDo_time">
+                        {this.props.sth.startTime} 
+                    </span>
+
+                    <span>~</span>
+                    
+                    <span className="obj-sthToDo_endTime">
+                        <button className="obj-sthToDo_finishBtn" onClick={this.endTimeBtn}>Finish</button> 
+                    </span>
+                    <form className="obj-sthToDo_editFinishForm">
+                            <input className="obj-sthToDo_editFinishInput"></input>
+                            <button className="obj-sthToDo_editInputBtn">Add</button>
+                    </form>)   
+                    <button className="obj-sthToDo_editBtn" onClick={this.onEditTimeReady}><i class="fas fa-edit"></i></button>
                 </div>
 
                 <div className="obj-sthToDo_part2">

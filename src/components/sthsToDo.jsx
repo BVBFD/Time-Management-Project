@@ -25,6 +25,14 @@ class SthsToDo extends Component {
     onAddToDoList = (toDoName, sth) => {
         this.props.onAddToDoList(toDoName, sth);
     };
+    
+    onEditTime = (sth, strChangedTime, endChangedTime) => {
+        this.props.onEditTime(sth, strChangedTime, endChangedTime);
+    };
+
+    onEditTimeReady = (sth) => {
+        this.props.onEditTimeReady(sth);
+    };
 
     render() {
         return (
@@ -39,6 +47,8 @@ class SthsToDo extends Component {
                             onDeleteBtn={this.onDeleteBtn}
                             onOpenToDoList={this.onOpenToDoList}
                             onAddToDoList={this.onAddToDoList}
+                            onEditTime={this.onEditTime}
+                            onEditTimeReady={this.onEditTimeReady}
                         />
                     ))
                 }
