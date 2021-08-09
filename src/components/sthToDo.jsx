@@ -42,7 +42,7 @@ class SthToDo extends Component {
     }
 
     onEditTime = () => {
-        this.props.onEditTime(this.props.sth, this.props.sth.strChangedTime, this.props.sth.endChangedTime);
+        this.props.onEditTime(this.props.sth, this.strChangedTime, this.endChangedTime);
     };
 
     onEditTimeReady = () => {
@@ -50,6 +50,8 @@ class SthToDo extends Component {
     };
 
     toDoInput = React.createRef();
+    strChangedTime = React.createRef();
+    endChangedTime = React.createRef();
 
     render() {
         return (
@@ -59,7 +61,7 @@ class SthToDo extends Component {
                         {this.props.sth.name} 
                         <span>(</span>
                         <form className="obj-sthToDo_editStrForm">
-                            <input className="obj-sthToDo_editInput"></input>
+                            <input ref={this.strChangedTime} className="obj-sthToDo_editInput" placeholder={this.props.sth.startTime}></input>
                             <button className="obj-sthToDo_editInputBtn">Add</button>
                         </form>
                     </span>
@@ -74,7 +76,7 @@ class SthToDo extends Component {
                         <button className="obj-sthToDo_finishBtn" onClick={this.endTimeBtn}>Finish</button> 
                     </span>
                     <form className="obj-sthToDo_editFinishForm">
-                            <input className="obj-sthToDo_editFinishInput"></input>
+                            <input ref={this.endChangedTime} className="obj-sthToDo_editFinishInput" placeholder={this.props.sth.endTime}></input>
                             <button className="obj-sthToDo_editInputBtn">Add</button>
                     </form>)   
                     <button className="obj-sthToDo_editBtn" onClick={this.onEditTimeReady}><i class="fas fa-edit"></i></button>

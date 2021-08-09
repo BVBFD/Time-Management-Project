@@ -24,15 +24,15 @@ class App extends Component {
     this.setState({sths});
   };
 
-  addEndTime = (endTime,finishBtnParentName) => {
+  addEndTime = (endTime, finishBtnParentName) => {
     const sths = [...this.state.sths];
     sths.map(sth => {
-      if(finishBtnParentName === sth.name){
+      if(finishBtnParentName === sth.name + "("){
         sth.endTime = endTime;
       }
+      this.setState({sths});
+      console.log({sths});
     });
-    this.setState({sths});
-    console.log({sths});
   };
 
   priorUpBtn = (sth) => {
@@ -100,13 +100,11 @@ class App extends Component {
   editTime = (sth, strChangedTime, endChangedTime) => {
     this.state.sths.forEach(value => {
       if(value.id === sth.id){
-        sth.startTime = strChangedTime;
-        sth.endTime = endChangedTime;
-        // const index = this.state.sths.indexOf(sth);
-        const strTime = document.querySelector('.obj-sthToDo_time');
-        const endTime = document.querySelector('.obj-sthToDo_endTime');
-        strTime.replaceWith(strChangedTime);
-        endTime.replaceWith(endChangedTime);
+        const index = this.state.indexOf(sth);
+        const newStrTime = document.querySelectorAll('.obj-sthToDo_time')[index];
+        const newEndTime = document.querySelectorAll('.obj-sthToDo_endTime')[index];
+        console.log(newStrTime, newEndTime);
+        console.log(strChangedTime, endChangedTime) 
       }
     });
   };
