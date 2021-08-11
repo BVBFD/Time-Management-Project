@@ -4,14 +4,12 @@ import Navbar from './components/navbar';
 import AddTimeBar from './components/addTimeBar';
 import SthsToDo from './components/sthsToDo';
 import AddTimeBar2 from './components/addTimeBar2';
-
 class App extends Component {
   state = {
     sths: [
   
     ]
   };
-
   handleAdd = (name) => {
     const sths = [...this.state.sths, 
       { id: this.state.sths.length + 1, 
@@ -45,7 +43,6 @@ class App extends Component {
     });
     this.setState({sths})
   };
-
   priorDownBtn = (sth) => {
     const sths = this.state.sths.map(value => {
       if(sth.id === value.id){
@@ -61,12 +58,10 @@ class App extends Component {
     })
     this.setState({sths});
   };
-
   deleteBtn = (sth) => {
     const sths = this.state.sths.filter(value => sth.id !== value.id);
     this.setState({sths});
   };
-
   openToDoList = (sth) => {
     this.state.sths.forEach(value => {
       if(sth.id === value.id){
@@ -76,7 +71,6 @@ class App extends Component {
       }
     });
   };
-
   addToDoList = (toDoName, sth) => {
     this.state.sths.forEach(value => {
       if(value.id === sth.id){
@@ -97,16 +91,25 @@ class App extends Component {
     });
   };
 
-  editTime = (sth, strChangedTime, endChangedTime) => {
-    this.state.sths.forEach(value => {
+  editEndTime = (sth) => {
+    const index = this.state.sths.indexOf(sth);
+    const editStrForm = document.querySelectorAll('.obj-sthToDo_editStrForm')[index];
+    const editFinishForm = document.querySelectorAll('.obj-sthToDo_editFinishForm')[index];
+    const strTime = document.querySelectorAll('.obj-sthToDo_time')[index];
+    const endTime = document.querySelectorAll('.obj-sthToDo_endTime')[index];
+    const newEndTime = document.querySelectorAll('.obj-sthToDo_editFinishInput')[index].value;
+    editStrForm.style.display = "none";
+    editFinishForm.style.display = "none";
+    strTime.style.display = "inline";
+    endTime.style.display = "inline";
+    endTime.innerText = newEndTime;
+    const sths = this.state.sths.map(value => {
       if(value.id === sth.id){
-        const index = this.state.indexOf(sth);
-        const newStrTime = document.querySelectorAll('.obj-sthToDo_time')[index];
-        const newEndTime = document.querySelectorAll('.obj-sthToDo_endTime')[index];
-        console.log(newStrTime, newEndTime);
-        console.log(strChangedTime, endChangedTime) 
+        return {...value, endTime: newEndTime};
       }
+      return value;
     });
+    this.setState({sths});
   };
 
   editTimeReady = (sth) => {
@@ -132,12 +135,10 @@ class App extends Component {
       }
     });
   };
-
   totalToDoCount = () => {
     const count = this.state.sths.length;
     return count;
   };
-
   render() {
     return (
       <div>
@@ -152,12 +153,11 @@ class App extends Component {
           onDeleteBtn={this.deleteBtn}
           onOpenToDoList={this.openToDoList}
           onAddToDoList={this.addToDoList}
-          onEditTime={this.editTime}
+          onEditEndTime={this.editEndTime}
           onEditTimeReady={this.editTimeReady}
         />
       </div>
     );
   }
 }
-
 export default App;

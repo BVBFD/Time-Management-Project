@@ -26,8 +26,8 @@ class SthsToDo extends Component {
         this.props.onAddToDoList(toDoName, sth);
     };
     
-    onEditTime = (sth, strChangedTime, endChangedTime) => {
-        this.props.onEditTime(sth, strChangedTime, endChangedTime);
+    onEditEndTime = (sth) => {
+        this.props.onEditEndTime(sth);
     };
 
     onEditTimeReady = (sth) => {
@@ -47,7 +47,7 @@ class SthsToDo extends Component {
                             onDeleteBtn={this.onDeleteBtn}
                             onOpenToDoList={this.onOpenToDoList}
                             onAddToDoList={this.onAddToDoList}
-                            onEditTime={this.onEditTime}
+                            onEditEndTime={this.onEditEndTime}
                             onEditTimeReady={this.onEditTimeReady}
                         />
                     ))

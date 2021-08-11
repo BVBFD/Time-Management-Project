@@ -41,8 +41,9 @@ class SthToDo extends Component {
         return this.props.sth.toDoList.length;
     }
 
-    onEditTime = () => {
-        this.props.onEditTime(this.props.sth, this.strChangedTime, this.endChangedTime);
+    onEditEndTime = (event) => {
+        event.preventDefault();
+        this.props.onEditEndTime(this.props.sth);
     };
 
     onEditTimeReady = () => {
@@ -62,7 +63,7 @@ class SthToDo extends Component {
                         <span>(</span>
                         <form className="obj-sthToDo_editStrForm">
                             <input ref={this.strChangedTime} className="obj-sthToDo_editInput" placeholder={this.props.sth.startTime}></input>
-                            <button className="obj-sthToDo_editInputBtn">Add</button>
+                            <button className="obj-sthToDo_editInputBtn">Edit!</button>
                         </form>
                     </span>
 
@@ -75,9 +76,9 @@ class SthToDo extends Component {
                     <span className="obj-sthToDo_endTime">
                         <button className="obj-sthToDo_finishBtn" onClick={this.endTimeBtn}>Finish</button> 
                     </span>
-                    <form className="obj-sthToDo_editFinishForm">
+                    <form className="obj-sthToDo_editFinishForm" onSubmit={this.onEditEndTime}>
                             <input ref={this.endChangedTime} className="obj-sthToDo_editFinishInput" placeholder={this.props.sth.endTime}></input>
-                            <button className="obj-sthToDo_editInputBtn">Add</button>
+                            <button className="obj-sthToDo_editInputBtn">Edit!</button>
                     </form>)   
                     <button className="obj-sthToDo_editBtn" onClick={this.onEditTimeReady}><i class="fas fa-edit"></i></button>
                 </div>
