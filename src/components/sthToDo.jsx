@@ -46,6 +46,11 @@ class SthToDo extends Component {
         this.props.onEditEndTime(this.props.sth);
     };
 
+    onEditStrTime = (event) => {
+        event.preventDefault();
+        this.props.onEditStrTime(this.props.sth);
+    };
+
     onEditTimeReady = () => {
         this.props.onEditTimeReady(this.props.sth);
     };
@@ -61,7 +66,7 @@ class SthToDo extends Component {
                     <span className="obj-sthToDo_title">
                         {this.props.sth.name} 
                         <span>(</span>
-                        <form className="obj-sthToDo_editStrForm">
+                        <form className="obj-sthToDo_editStrForm" onSubmit={this.onEditStrTime}>
                             <input ref={this.strChangedTime} className="obj-sthToDo_editInput" placeholder={this.props.sth.startTime}></input>
                             <button className="obj-sthToDo_editInputBtn">Edit!</button>
                         </form>

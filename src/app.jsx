@@ -112,6 +112,28 @@ class App extends Component {
     this.setState({sths});
   };
 
+  editStrTime = (sth) => {
+    console.log(sth);
+    const index = this.state.sths.indexOf(sth);
+    const editStrForm = document.querySelectorAll('.obj-sthToDo_editStrForm')[index];
+    const editFinishForm = document.querySelectorAll('.obj-sthToDo_editFinishForm')[index];
+    const strTime = document.querySelectorAll('.obj-sthToDo_time')[index];
+    const endTime = document.querySelectorAll('.obj-sthToDo_endTime')[index];
+    const newStrTime = document.querySelectorAll('.obj-sthToDo_editInput')[index].value;
+    editStrForm.style.display = "none";
+    editFinishForm.style.display = "none";
+    strTime.style.display = "inline";
+    endTime.style.display = "inline";
+    strTime.innerText = newStrTime;
+    const sths = this.state.sths.map(value => {
+      if(value.id === sth.id){
+        return {...value, startTime: newStrTime};
+      }
+      return value;
+    });
+    this.setState({sths});
+  };
+
   editTimeReady = (sth) => {
     this.state.sths.forEach(value => {
       if(sth.id === value.id){
@@ -154,6 +176,7 @@ class App extends Component {
           onOpenToDoList={this.openToDoList}
           onAddToDoList={this.addToDoList}
           onEditEndTime={this.editEndTime}
+          onEditStrTime={this.editStrTime}
           onEditTimeReady={this.editTimeReady}
         />
       </div>

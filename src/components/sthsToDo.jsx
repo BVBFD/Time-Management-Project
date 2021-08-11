@@ -30,6 +30,10 @@ class SthsToDo extends Component {
         this.props.onEditEndTime(sth);
     };
 
+    onEditStrTime = (sth) => {
+        this.props.onEditStrTime(sth);
+    };
+
     onEditTimeReady = (sth) => {
         this.props.onEditTimeReady(sth);
     };
@@ -48,6 +52,7 @@ class SthsToDo extends Component {
                             onOpenToDoList={this.onOpenToDoList}
                             onAddToDoList={this.onAddToDoList}
                             onEditEndTime={this.onEditEndTime}
+                            onEditStrTime={this.onEditStrTime}
                             onEditTimeReady={this.onEditTimeReady}
                         />
                     ))
