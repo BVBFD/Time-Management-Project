@@ -43,6 +43,7 @@ class App extends Component {
     });
     this.setState({sths})
   };
+
   priorDownBtn = (sth) => {
     const sths = this.state.sths.map(value => {
       if(sth.id === value.id){
@@ -58,10 +59,12 @@ class App extends Component {
     })
     this.setState({sths});
   };
+
   deleteBtn = (sth) => {
     const sths = this.state.sths.filter(value => sth.id !== value.id);
     this.setState({sths});
   };
+
   openToDoList = (sth) => {
     this.state.sths.forEach(value => {
       if(sth.id === value.id){
@@ -71,6 +74,7 @@ class App extends Component {
       }
     });
   };
+
   addToDoList = (toDoName, sth) => {
     this.state.sths.forEach(value => {
       if(value.id === sth.id){
@@ -80,6 +84,25 @@ class App extends Component {
         const listToDo_cnt = document.createTextNode(toDoName);
         const listToDo_btn = document.createElement('button');
         const listToDo_cnt_exit = document.createTextNode('x');
+
+        listToDo_btn.addEventListener("click", event => {
+          listToDo_ul.removeChild(event.target.parentNode);
+          console.log(event.target.parentNode.textContent);
+          console.log(`${sth.toDoList}`);
+          const toDoList = sth.toDoList.filter(value => 
+            value + "x" !== event.target.parentNode.textContent
+          );
+          console.log(toDoList);
+          const sths = this.state.sths.map(value => {
+            if(value.id === sth.id){
+              sth.toDoList = toDoList;
+              return sth;
+            } 
+            return value;
+          });
+          this.setState({sths});
+        });
+      
         listToDo_li.appendChild(listToDo_cnt);
         listToDo_ul.appendChild(listToDo_li);
         listToDo_btn.appendChild(listToDo_cnt_exit);
@@ -157,10 +180,12 @@ class App extends Component {
       }
     });
   };
+
   totalToDoCount = () => {
     const count = this.state.sths.length;
     return count;
   };
+
   render() {
     return (
       <div>

@@ -89,7 +89,7 @@ class SthToDo extends Component {
                 </div>
 
                 <div className="obj-sthToDo_part2">
-                    <span className="sthToDoList_count">0</span>
+                    <span className="sthToDoList_count">{this.props.sth.toDoList.length}</span>
                     <button className="addingSthToDoBtn" onClick={this.onOpenToDoList}>
                         <i className="fas fa-caret-square-down fa-lg"></i>
                     </button>
