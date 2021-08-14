@@ -101,6 +101,8 @@ class App extends Component {
             return value;
           });
           this.setState({sths});
+          const count = sth.toDoList.length;
+          document.querySelectorAll(".sthToDoList_count")[index].innerText = count;
         });
       
         listToDo_li.appendChild(listToDo_cnt);
