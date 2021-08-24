@@ -1,6 +1,6 @@
-import React, { createRef, useCallback, useEffect, useRef, useState } from 'react';
+import React, { createRef, memo, useCallback, useEffect, useRef, useState } from 'react';
 
-const AddTimeBar2 = (props) => {
+const AddTimeBar2 = memo((props) => {
     const date = new Date();
     const [seconds, setSeconds] = useState(date.getSeconds());
     const [min, setMin] = useState(date.getMinutes());
@@ -49,6 +49,6 @@ const AddTimeBar2 = (props) => {
             <div className="explain-content">Content: Something To Do, (Time), The number of projects, Priority, Delete</div>
         </>
     );
-};
+});
 
 export default AddTimeBar2;
